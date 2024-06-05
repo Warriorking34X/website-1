@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Form</title>
+  <style>
+    #contact-form {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    #contact-form label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    #contact-form input, #contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+    }
+    
+    #contact-form input[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    
+    #contact-form input[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <form id="contact-form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+    <label for="message">Message:</label>
+    <textarea id="message" name="message"></textarea><br><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+  
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', validateForm);
+    
+    function validateForm(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      if (name === '') {
+        alert('Please enter your name');
+        return;
+      }
+      
+      if (email === '' ||!validateEmail(email)) {
+        alert('Please enter a valid email address');
+        return;
+      }
+      
+      if (message === '') {
+        alert('Please enter a message');
+        return;
+      }
+      
+      alert(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
+      alert('we have collected your message and will try to get back to you as soon as possible')
+      window.close();
+    }
+    
+    function validateEmail(email) {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return emailRegex.test(email);
+    }
+  function logSubmit(event) {
+  log.textContent = `Form Submitted! we have collected the message you had for us and we will try to get back to you as soon as possible`;
+  event.preventDefault();
+  alert("Form Submitted! we have collected the message you had for us and we will try to get back to you as soon as possible")
+}
+
+  </script>
+</body>
+</html>
